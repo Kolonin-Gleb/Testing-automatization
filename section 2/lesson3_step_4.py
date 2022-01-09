@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 import time
 import math
 
+# Данная функция решает загадку, чтобы пройти уровень.
 def calc(x):
   return str(math.log(abs(12*math.sin(int(x)))))
 
