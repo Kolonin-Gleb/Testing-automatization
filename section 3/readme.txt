@@ -1,1 +1,1 @@
-"nf gfgrf ,eltn cjlth;fnm rjl 3 vjlekz rehcf/
+Эта папка будет содержать код 3 модуля курса.
