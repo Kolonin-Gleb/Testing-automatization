@@ -1,6 +1,11 @@
 import pytest # для запуска тестов
 from selenium import webdriver # Для проведения тестов в браузере
-from selenium.webdriver.common.by import By
+from selenium.webdriver.common.by import By # Для удобного поиска элементов с помощью selenium.webdriver
+
+# 
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 
 # Для решения задач на страницах
 import time
@@ -30,13 +35,13 @@ def get_task_answer():
 # Также обрабатываемую ссылку можно подавать через параметр.
 # Для этого тесту необх. доб. декоратор с соотв. маркировкой.
 links = [
-"https://stepik.org/lesson/236895/step/1",
-"https://stepik.org/lesson/236896/step/1",
-"https://stepik.org/lesson/236897/step/1",
+# "https://stepik.org/lesson/236895/step/1",
+# "https://stepik.org/lesson/236896/step/1",
+# "https://stepik.org/lesson/236897/step/1",
 "https://stepik.org/lesson/236898/step/1",
 "https://stepik.org/lesson/236899/step/1",
-"https://stepik.org/lesson/236903/step/1",
-"https://stepik.org/lesson/236904/step/1",
+# "https://stepik.org/lesson/236903/step/1",
+# "https://stepik.org/lesson/236904/step/1",
 "https://stepik.org/lesson/236905/step/1"
 ]
 
@@ -45,7 +50,8 @@ links = [
 def browser():
     print("\nStart browser for test.")
     browser = webdriver.Chrome()
-    yield browser
+    yield browser # yeild - финализатор. Необходим для закрытия окна браузера по завершению теста.
+    # этот код выполнится после завершения теста
     print("\nQuit browser. Test finished.")
 
 # Тестом ниже я буду возращать фидбек с каждой страницы по ссылке
@@ -54,27 +60,34 @@ def browser():
 # Маркировка для проведения тестов с различными ссылками
 @pytest.mark.parametrize('link', links) # link - имя параметра. links - список возможных значения параметра.
 def test_get_feedback(browser, link):
-    browser.get(link)
-    answer = get_task_answer()
+    # Установка неявного ожидания (Implicit wait)
+    # при инициализации драйвера устанавливает это ожидание для всех тестов
+    # Поиск эл. будет осуществляться не более 5 секунд
+    browser.implicitly_wait(5)
 
-    # Страница не загружается моментально. Нужно настроить задержку
-    input_field = browser.find_element(By.CSS_SELECTOR, "textarea")
+    browser.get(link)
+    answer = str(get_task_answer())
+
+    input_field = browser.find_element(By.CSS_SELECTOR, "textarea") # browser.find_element_by_tag_name('textarea')
     input_field.send_keys(answer)
-    # Поиск кнопки и нажатие
-    button = browser.find_element(By.CSS_SELECTOR, "div.attempt__actions > button") # По кнопке и тексту на ней
+    time.sleep(3)
+
+    button = browser.find_element(By.CSS_SELECTOR, "div.attempt__actions > button")
     button.click()
 
-    # Жду фидбек и возвращаю его
+    # Чтение feedback
+    feedback = browser.find_element(By.CLASS_NAME, 'smart-hints__hint')
+    # print(feedback.text)
 
-    # Читаю feedback
-    feedback = browser.find_element(By.XPATH, '//*[@id="ember211"]/pre') 
+    # Проверка feedback на послание нло (Т.е. не Correct!)
+
+    assert "Correct!" == feedback.text, f"UFO language detected! It says: {feedback.text}"
 
     # В упавших тестах найдите кусочки послания. Тест должен падать, если текст в опциональном фидбеке не совпадает со строкой 
     # "Correct!" Соберите кусочки текста в одно предложение и отправьте в качестве ответа на это задание. 
 
     
-    # Перед запуском следующего теста необх. закрыть тек. окно браузера
-
+    # TODO: Перед запуском следующего теста необх. закрыть тек. окно браузера!
 
 
 
