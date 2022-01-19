@@ -1,0 +1,14 @@
+Установка Firefox и Selenium-драйвера geckodriver
+
+Чтобы избавить себя от мучений, очень советую использовать библиотеку webdriver_manager,
+и не нужно вручную мучиться с установкой драйверов, все будет сделано за Вас.
+
+Можно будет проверить этот совет!
+
+pip install webdriver_manager
+
+from webdriver_manager.firefox import GeckoDriverManager
+
+driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
+
+
