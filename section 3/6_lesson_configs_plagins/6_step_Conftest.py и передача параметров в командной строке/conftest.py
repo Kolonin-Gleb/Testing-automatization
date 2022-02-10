@@ -11,6 +11,7 @@ from selenium import webdriver
 
 # Встроенная функция
 def pytest_addoption(parser):
+    # Код для выбора браузера с помощью cmd
     parser.addoption('--browser_name', action='store', default=None,
     help="Choose browser: chrome or firefox")
     # default="chrome" - сделает браузером по умолчанию chrome
