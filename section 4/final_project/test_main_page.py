@@ -14,13 +14,21 @@
 # # pytest -v --tb=line test_main_page.py
 
 # Написанный по Page Object
-# from .pages.base_page import BasePage # Импорт класса, описывающего возможные действия между пользователем и страницей
+from .pages.main_page import MainPage # Импорт класса, описывающего возможные действия между пользователем и страницей
 
-# def test_guest_can_go_to_login_page(browser):
-#     link = "http://selenium1py.pythonanywhere.com/"
-#     page = BasePage(browser, link)
-#     page.open()
+#Непосредственно сами тесты
 
-# # Проверка работоспособности теста. 
-# # pytest -v --tb=line test_main_page.py
+def test_guest_can_go_to_login_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/"
+    page = MainPage(browser, link)
+    page.open()
+
+def test_guest_should_see_login_link(browser):
+    link = "http://selenium1py.pythonanywhere.com/"
+    page = MainPage(browser, link)
+    page.open()
+    page.should_be_login_link()
+
+# Проверка работоспособности теста. 
+# pytest -v --tb=line test_main_page.py
 

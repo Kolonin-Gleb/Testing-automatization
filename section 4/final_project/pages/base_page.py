@@ -24,5 +24,3 @@ class BasePage():
     def open(self):
         self.browser.get(self.url)
 
-# Для запуска теста, который описывается данным классом запусти тест в test_main_page.py
-
