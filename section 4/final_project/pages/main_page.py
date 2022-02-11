@@ -1,15 +1,22 @@
-from .base_page import BasePage # Импорт класса
+from .base_page import BasePage # Импорт класса-страницы, необх. для описания класса MainPage
+
+# Импорт локаторов, который позволяет удобнее работать с селекторами при изм. в верстке
+from .locators import MainPageLocators
 
 from selenium.webdriver.common.by import By
 
 class MainPage (BasePage): # Наследование
     # Тест-действие
     def go_to_login_page(self):
-        login_link = self.browser.find_element(By.CSS_SELECTOR, "#login_link")
+        # *MainPageLocators.LOGIN_LINK - исп. инструкций для селектора, что описаны во внешнем файле
+        login_link = self.browser.find_element(*MainPageLocators.LOGIN_LINK) 
         login_link.click()
+
 
     # Тест-проверка
     def should_be_login_link(self):
         # Исп. конструкции assert для выполнения проверки
-        assert self.is_element_present(By.CSS_SELECTOR, "#login_link_invalid"), "Login link is not presented"
+        assert self.is_element_present(*MainPageLocators.LOGIN_LINK), "Login link is not presented"
 
+
+    
