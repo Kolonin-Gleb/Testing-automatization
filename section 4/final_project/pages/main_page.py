@@ -6,12 +6,13 @@ from .locators import MainPageLocators
 
 from selenium.webdriver.common.by import By
 
+## http://selenium1py.pythonanywhere.com/ru/ - страница описываемая классом
 class MainPage (BasePage): # Наследование
     # Тест-действие
     def go_to_login_page(self):
         # *MainPageLocators.LOGIN_LINK - исп. инструкций для селектора, что описаны во внешнем файле
         login_link = self.browser.find_element(*MainPageLocators.LOGIN_LINK) 
-        login_link.click()
+        login_link.click() # Переход по найденной ссылке (на стр. login_page)
 
 
     # Тест-проверка
