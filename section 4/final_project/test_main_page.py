@@ -18,7 +18,6 @@ from .pages.main_page import MainPage # Действия между пользо
 
 from .pages.login_page import LoginPage # Действия между пользователем и LoginPage
 
-# TODO: Усовершенствовать этот тест добавив проверки
 def test_guest_can_go_to_login_page(browser):
     link = "http://selenium1py.pythonanywhere.com/"
     page = MainPage(browser, link)

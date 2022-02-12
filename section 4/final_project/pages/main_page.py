@@ -14,7 +14,6 @@ class MainPage (BasePage): # Наследование
         login_link = self.browser.find_element(*MainPageLocators.LOGIN_LINK) 
         login_link.click() # Переход по найденной ссылке (на стр. login_page)
 
-
     # Тест-проверка
     def should_be_login_link(self):
         # Исп. конструкции assert для выполнения проверки
