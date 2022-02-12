@@ -8,17 +8,13 @@ class MainPageLocators():
     # Это кортеж, который содержит в себе информацию как искать и что искать. 
     # Он используется в селекторах, а при изменении в верстке,
     # нужно будет изменить только как искать в этом файле
-    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link") #registration_link
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
 
 # Локаторы для страницы http://selenium1py.pythonanywhere.com/ru/accounts/login/
 class LoginPageLocators():
-    # Подберите селекторы к формам регистрации и логина, добавьте их в класс LoginPageLocators +
-
-    # Кнопка Войти => Форма логина
+    # Кнопка Войти на форме логина
     LOGIN_BUTTON = (By.CSS_SELECTOR, "#login_form > button")
 
-    # Кнопка Зарегистрироваться => Форма регистрации
+    # Кнопка зарегистрироваться на форме регистрации
     REGISTER_BUTTON = (By.CSS_SELECTOR, "#register_form > button")
-
-
 

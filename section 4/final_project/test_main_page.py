@@ -46,9 +46,6 @@ def test_guest_should_see_login_link(browser):
 # Нужно написать тест для страницы LoginPage?
 
 
-
-
-
-# Проверка работоспособности теста. 
+# Проверка работоспособности тестов
 # pytest -v --tb=line test_main_page.py
 

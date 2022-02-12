@@ -16,17 +16,11 @@ class LoginPage(BasePage):
         self.should_be_register_form()
 
     def should_be_login_url(self):
-        assert self.browser.currect_url == "http://selenium1py.pythonanywhere.com/en-gb/accounts/login/", "Not a login url" 
+        assert self.browser.current_url == "http://selenium1py.pythonanywhere.com/en-gb/accounts/login/", "Not a login url" 
 
     def should_be_login_form(self):
-        # реализуйте проверку, что есть форма логина
-
-        # TODO: Задать неверный селектор и посмотреть, как тест упадёт
         assert self.is_element_present(*LoginPageLocators.LOGIN_BUTTON), "Login button is not presented"
 
     def should_be_register_form(self):
-        # реализуйте проверку, что есть форма регистрации на странице
-
-        # TODO: Задать неверный селектор и посмотреть, как тест упадёт
         assert self.is_element_present(*LoginPageLocators.REGISTER_BUTTON), "Register button is not presented"
 
