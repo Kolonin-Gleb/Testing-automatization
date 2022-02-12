@@ -11,4 +11,10 @@ class MainPageLocators():
     # нужно будет изменить только как искать в этом файле
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link") #registration_link
 
+
+class LoginPageLocators():
+    # Подберите селекторы к формам регистрации и логина, добавьте их в класс LoginPageLocators
+    
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link") #registration_link
+    pass
     

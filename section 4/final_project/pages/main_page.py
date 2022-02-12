@@ -1,6 +1,7 @@
-from .base_page import BasePage # Импорт класса-страницы, необх. для описания класса MainPage
+# Импорт класса-страницы, необх. для описания класса MainPage
+from .base_page import BasePage
 
-# Импорт локаторов, который позволяет удобнее работать с селекторами при изм. в верстке
+# Импорт локаторов, для удобной работы с селекторами при изм. в верстке
 from .locators import MainPageLocators
 
 from selenium.webdriver.common.by import By
