@@ -33,7 +33,7 @@ class TestMainPage1():
         browser.get(link)
         browser.find_element_by_css_selector(".basket-mini .btn-group > a")
 
-# Запуск тестов осуществляется командой с флогом -m и названием метки
+# Запуск тестов осуществляется командой с флагом -m и названием метки
 # pytest -s -v -m smoke 2_step_marking1.py
 # ! При запуске возникнут предупреждения
 
